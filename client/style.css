@@ -1,0 +1,37 @@
+
+
+.nav-item{
+    padding: 10px 10px;
+}
+.banner{
+    height: 800px;
+    width: 100%;
+}
+
+.about{
+    padding: 0 180px;
+}
+
+h6{
+    font-size: 24px;
+    text-decoration: underline;
+    text-align: center;
+}
+
+
+.cardHolder{
+    display: flex;
+    justify-content: center;
+}
+.card-img-top{
+    height: 190.66px;
+}
+
+.signUpButtonDiv{
+    text-align: center;
+}
+.signUpButton{
+    background-color: lightblue;
+    padding: 15px 25px;
+    border-radius: 12px;
+}
