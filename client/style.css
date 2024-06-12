@@ -35,3 +35,62 @@ h6{
     padding: 15px 25px;
     border-radius: 12px;
 }
+
+
+/* MEDIA QUIERIES*/
+
+@media screen and (max-width: 992px) {
+    /*.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link{
+        padding-left: 10px;
+    }*/
+    .navbar-nav{
+        display: -webkit-inline-box;
+    }
+    .navbar-nav .nav-link {
+        padding-left: 10px;
+    }
+    .banner{
+        height: 400px;
+        width: 100%;
+    }
+    .about{
+        padding: 0 120px;
+    }
+    .coding-den{
+        font-size: 0px;
+    }
+
+
+}
+
+@media screen and (max-width: 992px) {
+    .card-text{
+        font-size: 12px;
+    }
+    .list-group-item{
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 705px) {
+    .cardHolder{
+        display: block;
+    }
+    .card-text{
+        font-size: 16px;
+    }
+    .list-group-item{
+        font-size: 16px;
+    }
+}
+@media screen and (max-width: 500px) {
+    .banner{
+        height: 300px;
+        width: 100%;
+    }
+    .about{
+        padding: 0 100px;
+    }   
+    .cardHolder{
+        display: block;
+    }
+}
