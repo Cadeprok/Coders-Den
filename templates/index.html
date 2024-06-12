@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coders Den</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body id="home">
     <section id="navbar">
@@ -23,7 +23,7 @@
           </nav>
     </section>
     <section id="banner">
-        <img src="./img/banner.jpg" class="banner">
+        <img src="../img/banner.jpg" class="banner">
     </section>
     <br><br><br>
     <section class="container-md about" id="about">
@@ -60,7 +60,7 @@
             <br>
                 <div class="cardHolder">
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="./img/prof1.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="../img/prof1.jpg" alt="Card image cap">
                         <div class="card-body">
                         <h5 class="card-title">Jane Doe</h5>
                         <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt ea quod ab nulla totam optio vero molestias soluta repellendus maxime.</p>
@@ -71,7 +71,7 @@
                     </div>
                 
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="./img/prof2.webp" alt="Card image cap">
+                    <img class="card-img-top" src="../img/prof2.webp" alt="Card image cap">
                     <div class="card-body">
                     <h5 class="card-title">John Doe</h5>
                     <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos iste dolorem perspiciatis nesciunt excepturi atque, sed illum quis voluptas rerum!</p>
@@ -83,7 +83,7 @@
                 </div>
 
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="./img/prof3.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="../img/prof3.jpg" alt="Card image cap">
                     <div class="card-body">
                     <h5 class="card-title">John Doe</h5>
                     <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus laborum blanditiis tempora similique sed optio illo unde nostrum laboriosam ratione?</p>
@@ -99,8 +99,8 @@
             <h6> SIGN UP NOW!!</h6>
             <br>
             <div class="signUpButtonDiv">
-                <button class="signUpButton" href="./client/signUpPage.html">
-                    Sign Up
+                <button class="signUpButton">
+                    <a href="{{url_for('login')}}">Sign Up</a>
                 </button>
             </div>
         </div>

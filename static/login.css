@@ -1,0 +1,31 @@
+
+
+
+
+.container-align{
+    text-align: center;
+}
+.container-item{
+    padding-top: 20px;
+    color:blue;
+    font-size: 20px;
+}
+.container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 200px;
+    margin-top: -100px; /* half of you height */
+    width: 400px;
+    margin-left: -200px; /* half of you width */
+    border: 2.5px solid blue;
+    padding: 25px;
+    border-radius: 25px;
+
+}
+
+.log-in-button{
+    background-color: lightblue;
+    padding: 15px 25px;
+    border-radius: 12px;
+}
