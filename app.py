@@ -16,3 +16,7 @@ def login():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+# https://www.geeksforgeeks.org/login-and-registration-project-using-flask-and-mysql/
+# https://www.youtube.com/watch?v=2mbHyB2VLYY
