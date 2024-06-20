@@ -4,7 +4,7 @@ from flask_login import UserMixin
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
-from flask_bcrypt import bcrypt
+from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)
 # Creates database instance
@@ -15,7 +15,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'thisisasecretkey'
 
 db = SQLAlchemy(app)
-bcrypt = bcrypt(app)
+bcrypt = Bcrypt(app)
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), nullable=False, unique=True)
@@ -25,7 +25,7 @@ class RegisterForm(FlaskForm):
     username = StringField(validators=[InputRequired(), Length(
         min=4,max=20)], render_kw={"placeholder":"Username"})
     
-    username = PasswordField(validators=[InputRequired(), Length(
+    password = PasswordField(validators=[InputRequired(), Length(
         min=4,max=50)], render_kw={"placeholder":"Password"})
     
     submit = SubmitField("Register")
@@ -71,6 +71,8 @@ def login():
     form = loginForm()
     return render_template('login.html', form=form)   
 
+
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
 
@@ -80,6 +82,8 @@ def register():
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('login'))
+
+    return render_template('register.html', form=form)   
 
 if __name__ == '__main__':
     app.run(debug=True)
