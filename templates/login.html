@@ -8,20 +8,12 @@
 </head>
 <body>
     <section>
-        <div class="container container-align">
-            <div class="container-item">
-                <label for="email"><b>Enter Username or Email</b></label>
-                <input type="text" placeholder="Enter Username or Email" name="email" required>
-            </div>
-
-            <div class="container-item">
-                <label for="psw"><b>Password</b></label><br>
-                <input type="password" placeholder="Enter Password" name="psw" required>
-            </div>
-            <div class="container-item">
-                <button class="log-in-button">Log In</button>
-            </div>
-        </div>
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            {{ form.username }}
+            {{ form.password }}
+            {{ form.submit }}
+        </form>
     </section>
 </body>
 </html>
