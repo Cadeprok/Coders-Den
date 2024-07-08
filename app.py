@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import UserMixin
+from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
@@ -16,6 +16,14 @@ app.config['SECRET_KEY'] = 'thisisasecretkey'
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = "login"
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), nullable=False, unique=True)
@@ -69,9 +77,19 @@ def home():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = loginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first() # Checking to see if user is in database
+        if user:
+            if bcrypt.check_password_hash(user.password, form.password.data): # Comparing user password and form password
+                login_user(user)
+                return redirect(url_for('userdash'))
     return render_template('login.html', form=form)   
 
-
+@app.route('/logout', methods=['GET', 'POST'])
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
@@ -84,6 +102,13 @@ def register():
         return redirect(url_for('login'))
 
     return render_template('register.html', form=form)   
+
+@app.route('/userdash', methods=['GET', 'POST'])
+@login_required
+def userdash():
+    return render_template('userdash.html')
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
