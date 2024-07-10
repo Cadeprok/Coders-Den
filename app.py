@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, redirect
+from flask import Flask, render_template, url_for, redirect, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user
 from flask_wtf import FlaskForm
@@ -28,6 +28,12 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), nullable=False, unique=True)
     password = db.Column(db.String(50), nullable=False)
+class Courses(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    owner_id = db.Column(db.Integer, db. ForeignKey('user.id'), nullable=False)
+    user = db.relationship('User', backref='courses')
+    javascriptOwner = db.Column(db.Boolean, default=True, nullable=False)
+    pythonOwner = db.Column(db.Boolean, default=True, nullable=False)
 
 class RegisterForm(FlaskForm):
     username = StringField(validators=[InputRequired(), Length(
@@ -48,8 +54,6 @@ class RegisterForm(FlaskForm):
             )
         
 
-
-
 class loginForm(FlaskForm):
     username = StringField(validators=[InputRequired(), Length(
         min=4,max=20)], render_kw={"placeholder":"Username"})
@@ -60,13 +64,9 @@ class loginForm(FlaskForm):
     submit = SubmitField("Login")
 
 
-
-
 with app.app_context():
     db.create_all()
     print('DB Created')
-
-
 
 
 
@@ -107,6 +107,16 @@ def register():
 @login_required
 def userdash():
     return render_template('userdash.html')
+
+
+
+@app.route('/get_data')
+def get_data():
+    # User_data = Courses.query.filter_by(owner_id = user_id).all()
+    # print(User_data)
+    User_data = {'key': 'value'}
+    return jsonify(User_data)
+
 
 
 
