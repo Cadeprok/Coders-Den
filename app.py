@@ -11,7 +11,11 @@ import random
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = 'thisisasecretkey'
 db = SQLAlchemy(app)
+bcrypt = Bcrypt(app)
+
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -41,35 +45,46 @@ class loginForm(FlaskForm):
 
 def generateRandom():
     login = loginForm
-    val = User.query.filter_by(login.username).id
+    val = User.query.filter_by(username = login.username).first
+    val = val.id
     return string(val) + ''.join(random.choices(string.ascii_uppercase +
                              string.digits, k=4))
 
 
 
+@app.route('/')
+def home():
+    return render_template('index.html')
+
 @app.route('/login.html', methods=['GET', 'POST'])
 def login():
-    form = loginForm
+    form = loginForm()
 
 
     if form.validate_on_submit():
-        validator = User.query.filter_by(username = form.username.data.first)
+        validator = User.query.filter_by(username = form.username.data).first()
         if validator:
-            if Bcrypt.check_password_hash(validator.password, validator.password.data):
+            if bcrypt.check_password_hash(validator.password, form.password.data):
                 login_user(validator)
+                # return redirect(url_for('userdash'))
+                return render_template('userdash.html', form=form)
+    else:
+        return render_template('login.html', form=form)
                 
 
 
 @app.route('/register.html', methods=['GET', 'POST'])
 def register():
-    form = registerForm
+    form = registerForm()
 
     if form.validate_on_submit():
-        hp = Bcrypt.generate_password_hash(form.password.data)
-        user = User(username = form.username.data.first, password = hp)
+        hp = bcrypt.generate_password_hash(form.password.data)
+        user = User(username = form.username.data, password = hp)
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('login'))
+    else:
+        return render_template('register.html', form=form)
     
 
 @app.route('/userdash.html', methods=['GET', 'POST'])
@@ -77,7 +92,16 @@ def userdash():
     return redirect(url_for('userdash'))
 
 
-@app.route('/' + generateRandom() +  '/python.html', methods=['GET', 'POST'])
+@app.route('/get_data')
+def get_data():
+    dict = {
+        'ownsPython': True,
+        'ownsJavaScript' : False,
+        'ownsJava' : True
+    }
+    return jsonify(dict)
+
+@app.route('/' + 'generateRandom()' +  '/python.html', methods=['GET', 'POST'])
 def python():
     return redirect(url_for(''))
 

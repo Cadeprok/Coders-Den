@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../static/dash.css">
     <title>Document</title>
 </head>
-<body>
+<body class="body">
     <section id="navbar">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand coding-den" href="#">Coding Den</a>
@@ -19,14 +20,28 @@
           </nav>
     </section>
 
+
+
+    <section class="else">
     <!-- Load cards for Courses -->
-    <section id="output" >
-      <div>
-        <button href="{{url_for('python')}}">
-            python
-        </button>
-      </div>
+          <section id="renderCourses">
+            <div class="cardBorder">
+              <div>
+                <img src="../img/prof1.jpg">
+              </div>
+              <div>
+                <h1>test</h1>
+                <h2>test</h2>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias esse culpa rerum, voluptate nisi ea dignissimos consequuntur ipsam ratione iusto nobis voluptatum maxime. Repudiandae, illum voluptate? Dolores, culpa accusantium asperiores ex, sint quia, nam ad animi accusamus ipsa molestiae quidem!</p>
+              </div>
+              <div class="purchaseButton">
+                <button>
+                  Purchase
+                </button>
+              </div>
+          </div>
+          </section>
     </section>
-    <script src="app.js"></script>
+    <!-- <script src="app.js"></script> -->
 </body>
 </html>
