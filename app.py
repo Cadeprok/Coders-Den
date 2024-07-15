@@ -26,9 +26,13 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 class User(db.Model, UserMixin):
+    __tablename__ = 'user'
     id = db.Column(db.Integer, nullable=False, primary_key=True)
     username = db.Column(db.String(16), nullable=False, unique=True)
     password = db.Column(db.String(32), nullable=False)
+    ownsPython = db.Column(db.Boolean, default=False, nullable=False)
+    ownsJava = db.Column(db.Boolean, default=False, nullable=False)
+    ownsJavascript = db.Column(db.Boolean, default=False, nullable=False)
 
 
 
@@ -94,21 +98,20 @@ def userdash():
 
 @app.route('/get_data')
 def get_data():
-    dict = {
-        'ownsPython': True,
-        'ownsJavaScript' : False,
-        'ownsJava' : True
-    }
-    return jsonify(dict)
+    form = loginForm()
+    dict
+    dict.update({"ownsPython": User.query.filter_by(username = form.username.data).first().ownsPython})
+    dict.update({"ownsJava" : User.query.filter_by(username = form.username.data).first().ownsJava})
+    dict.update({"ownsPython" : User.query.filter_by(username = form.username.data).first().ownsJavascript})
+
+    return dict
+    
 
 @app.route('/' + 'generateRandom()' +  '/python.html', methods=['GET', 'POST'])
 def python():
     return redirect(url_for(''))
 
-
-
 if __name__ == '__main__':
     app.run(debug=True)
-
 
 # https://www.digitalocean.com/community/tutorials/how-to-use-flask-sqlalchemy-to-interact-with-databases-in-a-flask-application

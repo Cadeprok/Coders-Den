@@ -1,11 +1,27 @@
+.container {
+    height: 200px;
+    /*display: flex;*/
+    align-items: center;
+    justify-content: center;
+  }
+  .renderCourses{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .item {
+    width: 10em;
+  }
+
 .cardBorder{
-    border: 3px solid blue;
+
     padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
 }
 
-.else{
-    margin: 0 120px;
-}
 
 h1{
     text-align: center;
