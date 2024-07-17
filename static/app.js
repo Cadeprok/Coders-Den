@@ -1,7 +1,7 @@
 const render_data = document.querySelector('renderCourses');
 
-const data = fetch('/get_data')
-    .then(response => response.json())
+const data = fetch('http://localhost:5000/get_data')
+    .then((response) => {return response.json()})
     .then(data => {
         console.log(data)
     })
@@ -52,3 +52,8 @@ function renderProducts(){
     }
     })  
 }
+
+
+
+
+
