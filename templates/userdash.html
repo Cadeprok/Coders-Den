@@ -27,6 +27,29 @@
           <section id="renderCourses" class="renderCourses">
           </section>
     </section>
-    <script src="{{url_for('static', filename='../static/app.js')}}" type="module"></script>
+    <!--<script src="{{url_for('static', filename='../static/app.js')}}" type="module"></script> -->
+    <script type="text/javascript">
+
+        const user_id = "{{ user_id }}";
+
+        const url = `/get_data/${user_id}`
+
+        const response = null;
+        
+        async function fetchData() {
+          try {
+            const response = await fetch(url);
+            if(!response.ok){
+              throw new Error('Network response was not ok');
+            }
+            const data = await response.json();  // Convert response to JSON
+            console.log(data);
+
+          } catch (error) {
+              console.error('Error:', error);
+          }
+        }
+        fetchData();
+  </script>
 </body>
 </html>

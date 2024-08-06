@@ -10,7 +10,7 @@ let data = null;
     });*/
 
     try {
-        const response = await fetch('http://127.0.0.1:5000/api/get_data');
+        const response = await fetch('/api/get_data');
         const data = await response.json();  // Convert response to JSON
 
         console.log('Data:', data);
