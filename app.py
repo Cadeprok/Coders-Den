@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, redirect, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user
+from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
@@ -78,14 +78,49 @@ with app.app_context():
 
 
 
-@app.route('/api/get_data/<user_id>', methods=['GET'])
-def get_data(user_id):
-    print('hello')
+@app.route('/api/get_data', methods=['GET'])
+def get_data():
+    '''try:
+        print(f"1")
+        form = loginForm()
+        print(f"1")  
+        username = form.username.data
+        print(f"1")
+        user = User.query.filter_by(username=username).first()
+        print(f"1")
+        if user is None:
+            raise ValueError("User not found")
+        
+        data = {
+            "ownsPython": str(user.pythonOwner),
+            "ownsJava": str(user.javaOwner),  # Fixed key
+            "ownsJavascript": str(user.ownsJavascript)
+        }
+        
+        return jsonify(data)
+    except Exception as e:
+        print(f"Error occurred: {e}")
+        return jsonify({"error": "Internal Server Error"}), 500'''
+    
+    # CURRENT_USER
+    # CURRENT_USER
+    # CURRENT_USER
+
+
+    print("1")
+    form = loginForm()  
+    username = form.username.data
+    
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        raise ValueError("User not found")
+    
     data = {
-        "ownsPython": str(User.query.filter_by(username = form.username.data).first().javascriptOwner),
-        "ownsJava" : str(User.query.filter_by(username = form.username.data).first().pythonOwner),
-        "ownsPython" : str(User.query.filter_by(username = form.username.data).first().ownsJavascript)
+        "ownsPython": str(user.pythonOwner),
+        "ownsJava": str(user.javaOwner),  # Fixed key
+        "ownsJavascript": str(user.ownsJavascript)
     }
+    
     return jsonify(data)
 
 
@@ -125,9 +160,9 @@ def register():
 @app.route('/userdash', methods=['GET', 'POST'])
 @login_required
 def userdash():
-    form = loginForm()
-    user = User.query.filter_by(username = form.username).first()
-    return render_template('userdash.html', user_id = user.id)
+    
+    user = User.query.get(current_user.id)
+    return render_template('userdash.html', user_id = str(user.id))
 
 
 
