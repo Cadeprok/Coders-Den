@@ -28,14 +28,17 @@ login_manager.login_view = "login"
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
+
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), nullable=False, unique=True)
     password = db.Column(db.String(50), nullable=False)
+    courses = db.relationship('Courses', backref='user', lazy='dynamic')
 class Courses(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    owner_id = db.Column(db.Integer, db. ForeignKey('user.id'), nullable=False)
-    user = db.relationship('User', backref='courses')
+    owner_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    # user = db.relationship('User', backref='courses')
     javascriptOwner = db.Column(db.Boolean, default=False, nullable=False)
     pythonOwner = db.Column(db.Boolean, default=False, nullable=False)
     javaOwner = db.Column(db.Boolean, default=False, nullable= False)
@@ -75,6 +78,17 @@ with app.app_context():
 
 
 
+@app.route('/api/get_data/<user_id>', methods=['GET'])
+def get_data(user_id):
+    print('hello')
+    data = {
+        "ownsPython": str(User.query.filter_by(username = form.username.data).first().javascriptOwner),
+        "ownsJava" : str(User.query.filter_by(username = form.username.data).first().pythonOwner),
+        "ownsPython" : str(User.query.filter_by(username = form.username.data).first().ownsJavascript)
+    }
+    return jsonify(data)
+
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -111,24 +125,12 @@ def register():
 @app.route('/userdash', methods=['GET', 'POST'])
 @login_required
 def userdash():
-    return render_template('userdash.html')
-
-
-
-@app.route('/get_data')
-def get_data():
     form = loginForm()
-    #dict
-    #dict.update({"ownsPython": User.query.filter_by(username = form.username.data).first().javascriptOwner})
-    #dict.update({"ownsJava" : User.query.filter_by(username = form.username.data).first().pythonOwner})
-    #dict.update({"ownsPython" : User.query.filter_by(username = form.username.data).first().ownsJavascript})
-    #dict = jsonify(dict)
-    data = {
-        "ownsPython": str(User.query.filter_by(username = form.username.data).first().javascriptOwner),
-        "ownsJava" : str(User.query.filter_by(username = form.username.data).first().pythonOwner),
-        "ownsPython" : str(User.query.filter_by(username = form.username.data).first().ownsJavascript)
-    }
-    return jsonify(data)
+    user = User.query.filter_by(username = form.username).first()
+    return render_template('userdash.html', user_id = user.id)
+
+
+
 
 
 

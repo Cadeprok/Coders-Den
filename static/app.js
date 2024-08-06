@@ -1,14 +1,27 @@
 const render_data = document.querySelector('renderCourses');
-
-const data = fetch('http://localhost:5000/get_data')
+let data = null;
+/*const data = fetch('http://localhost:5000/get_data')
     .then((response) => {return response.json()})
     .then(data => {
         console.log(data)
     })
     .catch(error => {
         console.error('Error fetching user data:', error);
-    });
+    });*/
 
+async function fetchdata(user_id){
+    try {
+        const response = await fetch('http://127.0.0.1:5000/api/get_data/${user_id}');
+        const data = await response.json();  // Convert response to JSON
+
+        console.log('Data:', data);
+
+        // return data; 
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+fetchdata();
 
 function renderProducts(){
     data.forEach((data_entry) => {
@@ -53,7 +66,7 @@ function renderProducts(){
     })  
 }
 
-
+fetchdata();
 
 
 
