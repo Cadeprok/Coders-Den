@@ -24,17 +24,17 @@
 
     <section class="else container">
     <!-- Load cards for Courses -->
-          <section id="renderCourses" class="renderCourses">
+          <section id="render_data" class="renderCourses">
           </section>
     </section>
     <!--<script src="{{url_for('static', filename='../static/app.js')}}" type="module"></script> -->
     <script type="text/javascript">
-
+        render_data.innerHTML = ``;
         const user_id = "{{ user_id }}";
 
         const url = `/get_data/${user_id}`
 
-        const response = null;
+        
         
         async function fetchData() {
           try {
@@ -42,14 +42,58 @@
             if(!response.ok){
               throw new Error('Network response was not ok');
             }
-            const data = await response.json();  // Convert response to JSON
+            data = await response.json();  // Convert response to JSON
             console.log(data);
 
           } catch (error) {
               console.error('Error:', error);
           }
+          return data;
         }
+        let data = fetchData()
+        function getPurchasing(key){
+          if (key === 'pythonOwner'){
+            return 'python';
+          }
+          else if(key === 'javascriptOwner'){
+            return 'javascript';
+          }
+          else{
+            return 'java';
+          }
+        }
+
+        function renderContent(){
+
+            const data = Object.entries(data);
+
+            let url;
+            let buttonText;
+
+            for(const [key, values] of data){
+            if(key == 'javascriptOwner' )
+              render_data.innerHTML += 
+                `<div class="cardBorder item">
+                    <div>
+                      <img src="{{ url_for('static', filename='img/prof1.jpg') }}">
+                    </div>
+                    <div>
+                      <h1>test</h1>
+                      <h2>test</h2>
+                      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias esse culpa rerum, voluptate nisi ea dignissimos consequuntur ipsam ratione iusto nobis voluptatum maxime. Repudiandae, illum voluptate? Dolores, culpa accusantium asperiores ex, sint quia, nam ad animi accusamus ipsa molestiae quidem!</p>
+                    </div>
+                    <div class="purchaseButton">
+                      <a href="${user_id}/{{ url_for(key) }}">
+                        <button>
+                            ${buttonText}
+                        </button>
+                      </a>
+                    </div>
+                </div>`
+          }
+          
         fetchData();
+        renderContent();
   </script>
 </body>
 </html>
