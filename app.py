@@ -168,6 +168,26 @@ def register():
 
     return render_template('register.html', form=form)   
 
+
+@app.route('/userdash/pythoncourse', methods=['GET'])
+@login_required
+def pythoncourse():
+    user = User.query.filter_by(id = str(current_user.id)).first()
+    return render_template('pythoncourse.html', user_id = str(user.id), username = str(user.username))
+
+
+@app.route('/userdash/javascriptcourse', methods=['GET'])
+@login_required
+def javascriptcourse():
+    user = User.query.filter_by(id = str(current_user.id)).first()
+    return render_template('javascriptcourse.html', user_id = str(user.id), username = str(user.username))
+
+@app.route('/userdash/javacourse', methods=['GET'])
+@login_required
+def javacourse():
+    user = User.query.filter_by(id = str(current_user.id)).first()
+    return render_template('javacourse.html', user_id = str(user.id), username = str(user.username))
+
 @app.route('/userdash', methods=['GET', 'POST'])
 @login_required
 def userdash():

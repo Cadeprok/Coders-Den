@@ -13,7 +13,7 @@ let data = null;
         const response = await fetch('/api/get_data');
         const data = await response.json();  // Convert response to JSON
 
-        console.log('Data:', data);
+        console.log('Data:',    );
 
         // return data; 
     } catch (error) {
