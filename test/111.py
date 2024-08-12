@@ -129,3 +129,202 @@ def get_data(user_id):
             javascriptOwner = db.Column(db.Boolean, default=False, nullable=False)
             pythonOwner = db.Column(db.Boolean, default=False, nullable=False)
             javaOwner = db.Column(db.Boolean, default=False, nullable= False)*/
+        
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript">
+        render_data.innerHTML = ``;
+        const user_id = "{{ user_id }}";
+
+        const url = `/get_data/${user_id}`
+
+        
+        
+        async function fetchData() {
+          try {
+            const response = await fetch(url);
+            if(!response.ok){
+              throw new Error('Network response was not ok');
+            }
+            data = await response.json();  // Convert response to JSON
+            console.log(data);
+
+          } catch (error) {
+              console.error('Error:', error);
+          }
+          return data;
+        }
+        let data = fetchData()
+        function getPurchasing(key){
+          if (key === 'pythonOwner'){
+            return 'python';
+          }
+          else if(key === 'javascriptOwner'){
+            return 'javascript';
+          }
+          else{
+            return 'java';
+          }
+        }
+
+        function renderContent(){
+
+            const data = Object.entries(data);
+
+            let url;
+            let buttonText;
+
+            for(const [key, values] of data){
+            if(key == 'javascriptOwner' )
+              render_data.innerHTML += 
+                `<div class="cardBorder item">
+                    <div>
+                      <img src="{{ url_for('static', filename='img/prof1.jpg') }}">
+                    </div>
+                    <div>
+                      <h1>test</h1>
+                      <h2>test</h2>
+                      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias esse culpa rerum, voluptate nisi ea dignissimos consequuntur ipsam ratione iusto nobis voluptatum maxime. Repudiandae, illum voluptate? Dolores, culpa accusantium asperiores ex, sint quia, nam ad animi accusamus ipsa molestiae quidem!</p>
+                    </div>
+                    <div class="purchaseButton">
+                      <a href="${user_id}/{{ url_for(key) }}">
+                        <button>
+                            ${buttonText}
+                        </button>
+                      </a>
+                    </div>
+                </div>`
+          }
+          
+        fetchData();
+        renderContent();
+  </script>
+
+
+
+
+
+
+
+
+
+
+                `<div class="cardBorder item">
+                  <div>
+                    <img src="{{ url_for('static', filename='img/prof1.jpg') }}">
+                  </div>
+                  <div>
+                    <h1>test</h1>
+                    <h2>test</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias esse culpa rerum, voluptate nisi ea dignissimos consequuntur ipsam ratione iusto nobis voluptatum maxime. Repudiandae, illum voluptate? Dolores, culpa accusantium asperiores ex, sint quia, nam ad animi accusamus ipsa molestiae quidem!</p>
+                  </div>
+                  <div class="purchaseButton">
+                    <a href="{{ url_for('pythoncourse') }}">
+                      <button>
+                          Learn
+                      </button>
+                    </a>
+                  </div>
+              </div>
+
+              <div class="cardBorder item">
+                  <div>
+                    <img src="{{ url_for('static', filename='img/prof1.jpg') }}">
+                  </div>
+                  <div>
+                    <h1>test</h1>
+                    <h2>test</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias esse culpa rerum, voluptate nisi ea dignissimos consequuntur ipsam ratione iusto nobis voluptatum maxime. Repudiandae, illum voluptate? Dolores, culpa accusantium asperiores ex, sint quia, nam ad animi accusamus ipsa molestiae quidem!</p>
+                  </div>
+                  <div class="purchaseButton">
+                    <a href="{{ url_for('javascriptcourse') }}">
+                      <button>
+                          Learn
+                      </button>
+                    </a>
+                  </div>
+              </div>
+
+              <div class="cardBorder item">
+                  <div>
+                    <img src="{{ url_for('static', filename='img/prof1.jpg') }}">
+                  </div>
+                  <div>
+                    <h1>test</h1>
+                    <h2>test</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias esse culpa rerum, voluptate nisi ea dignissimos consequuntur ipsam ratione iusto nobis voluptatum maxime. Repudiandae, illum voluptate? Dolores, culpa accusantium asperiores ex, sint quia, nam ad animi accusamus ipsa molestiae quidem!</p>
+                  </div>
+                  <div class="purchaseButton">
+                    <a href="{{ url_for('javacourse') }}">
+                      <button>
+                          Learn
+                      </button>
+                    </a>
+                  </div>
+              </div>
+              
+              
+              
+              
+              `
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              /*render_data.innerHTML += 
+                `<div class="cardBorder item">
+                    <div>
+                      <img src="{{ url_for('static', filename='img/prof1.jpg') }}">
+                    </div>
+                    <div>
+                      <h1>test</h1>
+                      <h2>test</h2>
+                      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias esse culpa rerum, voluptate nisi ea dignissimos consequuntur ipsam ratione iusto nobis voluptatum maxime. Repudiandae, illum voluptate? Dolores, culpa accusantium asperiores ex, sint quia, nam ad animi accusamus ipsa molestiae quidem!</p>
+                    </div>
+                    <div class="purchaseButton">
+                      <a href="{{ url_for(${url}) }}">
+                        <button>
+                            ${buttonText}
+                        </button>
+                      </a>
+                    </div>
+                </div>`
+        }*/

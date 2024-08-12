@@ -1,13 +1,15 @@
-from flask import Flask, render_template, url_for, redirect, jsonify, request
+# from flask import Flask, render_template, url_for, redirect, jsonify, request
+from flask import *
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import update
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
-
-
+from forms import RegisterForm, loginForm, checkoutForm
+import time
 app = Flask(__name__)
 # Creates database instance
 
@@ -35,45 +37,18 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(20), nullable=False, unique=True)
     password = db.Column(db.String(50), nullable=False)
     # courses = db.relationship('Courses', backref='user', lazy='dynamic')
-    javascriptOwner = db.Column(db.Boolean, default=False, nullable=False)
+    javascriptOwner = db.Column(db.Boolean, default=True, nullable=False)
     pythonOwner = db.Column(db.Boolean, default=False, nullable=False)
     javaOwner = db.Column(db.Boolean, default=False, nullable= False)
-'''class Courses(db.Model):
+'''
+class Courses(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     owner_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     # user = db.relationship('User', backref='courses')
     javascriptOwner = db.Column(db.Boolean, default=False, nullable=False)
     pythonOwner = db.Column(db.Boolean, default=False, nullable=False)
-    javaOwner = db.Column(db.Boolean, default=False, nullable= False)'''
-
-class RegisterForm(FlaskForm):
-    username = StringField(validators=[InputRequired(), Length(
-        min=4,max=20)], render_kw={"placeholder":"Username"})
-    
-    password = PasswordField(validators=[InputRequired(), Length(
-        min=4,max=50)], render_kw={"placeholder":"Password"})
-    
-    submit = SubmitField("Register")
-
-    def validate_username(self, username):
-        existing = User.query.filter_by(
-            username = username.data).first()
-        print("1")
-        if existing:
-            raise ValidationError(
-                "That Username already exists, please choose a different one."
-            )
-    
-        
-
-class loginForm(FlaskForm):
-    username = StringField(validators=[InputRequired(), Length(
-        min=4,max=20)], render_kw={"placeholder":"Username"})
-    
-    password = PasswordField(validators=[InputRequired(), Length(
-        min=4,max=50)], render_kw={"placeholder":"Password"})
-    
-    submit = SubmitField("Login")
+    javaOwner = db.Column(db.Boolean, default=False, nullable= False)
+'''
 
 
 with app.app_context():
@@ -94,9 +69,9 @@ def get_data(user_id):
         return jsonify({"error": "Courses not found for user"}), 404'''
     
     user_data = {
-        "ownsPython": str(user.pythonOwner),
-        "ownsJava": str(user.javaOwner),
-        "ownsJavascript": str(user.javascriptOwner)
+        "ownsPython": user.pythonOwner,
+        "ownsJava": user.javaOwner,
+        "ownsJavascript": user.javascriptOwner
     }
     extra = request.args.get("extra")
     if extra:
@@ -166,25 +141,76 @@ def register():
         db.session.commit()
         return redirect(url_for('login'))
 
-    return render_template('register.html', form=form)   
+    return render_template('register.html', form=form)
 
+def checkDate(value):
+    temp = value.split('/')
+    if((len(temp[0]) != 0 or len(temp[1]) <= 3) and (temp[1].isdigit() and temp[2].isdigit)):
+        return True
+    else:
+        return False
 
-@app.route('/userdash/pythoncourse', methods=['GET'])
+@app.route('/checkout', methods=['GET', 'POST'])
 @login_required
-def pythoncourse():
+def checkout():
+    form = checkoutForm()
+    user = User.query.filter_by(id = str(current_user.id)).first()
+    passes = True
+    print(1)
+    if(form.validate_on_submit()):
+        print('Test1')
+        if((len(form.cc_number.data.replace(" ", "")) == 16) and (form.first_name.data.isalpha()) and (form.last_name.data.isalpha()) and (form.security_code.data.isdigit() and len(form.security_code.data) == 3) or checkDate(form.expiration_date.data)):
+            print('Test2')
+            if(form.purchasing.data == 'python'):
+                print('Test3')
+                user.pythonOwner = True
+                db.session.commit()
+                flash('Python Added')
+                return render_template('userdash.html', user_id = str(user.id))
+            elif(form.purchasing.data == 'javascript'):
+                print('Test4')
+                user.javascriptOwner = True
+                db.session.commit()
+                flash('Javascript Added')
+                return render_template('userdash.html', user_id = str(user.id))
+            elif(form.purchasing.data == 'java'):
+                print('Test5')
+                user.javaOwner = True
+                db.session.commit() 
+                flash('Java Added')
+                return render_template('userdash.html', user_id = str(user.id))
+            else:
+                flash('Error Occured, Please try again')
+    # print('hello')
+    # time.sleep(10)
+    return render_template('checkout.html', user_id = str(user.id), username = str(user.username), form=form)
+        
+    
+'''
+@app.route('/checkout', methods=['GET', 'POST'])
+@login_required
+def checkout():
+    user = User.query.filter_by(id = str(current_user.id)).first()
+    return render_template('checkout.html', user_id = str(user.id), username = str(user.username))
+'''
+
+
+@app.route('/userdash/<user_id>/pythoncourse', methods=['GET', 'POST'])
+@login_required
+def pythoncourse(user_id):
     user = User.query.filter_by(id = str(current_user.id)).first()
     return render_template('pythoncourse.html', user_id = str(user.id), username = str(user.username))
 
 
-@app.route('/userdash/javascriptcourse', methods=['GET'])
+@app.route('/userdash/user_id/javascriptcourse', methods=['GET'])
 @login_required
-def javascriptcourse():
+def javascriptcourse(user_id):
     user = User.query.filter_by(id = str(current_user.id)).first()
     return render_template('javascriptcourse.html', user_id = str(user.id), username = str(user.username))
 
-@app.route('/userdash/javacourse', methods=['GET'])
+@app.route('/userdash/user_id/javacourse', methods=['GET'])
 @login_required
-def javacourse():
+def javacourse(user_id):
     user = User.query.filter_by(id = str(current_user.id)).first()
     return render_template('javacourse.html', user_id = str(user.id), username = str(user.username))
 
