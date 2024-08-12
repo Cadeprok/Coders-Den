@@ -199,20 +199,20 @@ def checkout():
 @login_required
 def pythoncourse(user_id):
     user = User.query.filter_by(id = str(current_user.id)).first()
-    return render_template('pythoncourse.html', user_id = str(user.id), username = str(user.username))
+    return render_template('pythoncourse.html', user_id = str(user.id), username = str(user.username), price=50)
 
 
-@app.route('/userdash/user_id/javascriptcourse', methods=['GET'])
+@app.route('/userdash/<user_id>/javascriptcourse', methods=['GET'])
 @login_required
 def javascriptcourse(user_id):
     user = User.query.filter_by(id = str(current_user.id)).first()
-    return render_template('javascriptcourse.html', user_id = str(user.id), username = str(user.username))
+    return render_template('javascriptcourse.html', user_id = str(user.id), username = str(user.username), price=40)
 
-@app.route('/userdash/user_id/javacourse', methods=['GET'])
+@app.route('/userdash/<user_id>/javacourse', methods=['GET'])
 @login_required
 def javacourse(user_id):
     user = User.query.filter_by(id = str(current_user.id)).first()
-    return render_template('javacourse.html', user_id = str(user.id), username = str(user.username))
+    return render_template('javacourse.html', user_id = str(user.id), username = str(user.username), price=30)
 
 @app.route('/userdash', methods=['GET', 'POST'])
 @login_required

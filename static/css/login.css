@@ -29,3 +29,40 @@
     padding: 15px 25px;
     border-radius: 12px;
 }
+
+.center-screen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.center{
+    display: contents;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.loginContainer{
+    margin: auto;
+    top: 28%;
+    left: 40%;
+    width: 20%;
+    position: absolute;
+    /*border: 1px solid lightgreen;*/
+    outline: 8px ridge rgba(85, 233, 85, 0.6);
+    border-radius: 2rem;
+}
+.inputStyle{
+    padding: 5px;
+    margin: 5px;
+}
+.formVar{
+    padding-top: 7px;
+}
+.loginHeader{
+    padding-top: 5px;
+    color: rgba(18, 85, 18, 0.6);
+}
