@@ -1,42 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="../static/style.css"> -->
-    <link rel="stylesheet" href="../static/css/dash.css">
-
-    <title>Document</title>
-</head>
-<body class="body">
-    <section id="navbar" class="sticky">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand coding-den" href="#">Coding Den</a>
-            <div class="navbar-collapse nav-item-container" id="navbarNavAltMarkup">
-              <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a>
-              </div>
-              <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="{{url_for('logout')}}">Log Out <span class="sr-only">(current)</span></a>
-              </div>
-            </div>
-          </nav>
-    </section>
-
-
-
-    <section class="container">
-    <!-- Load cards for Courses -->
-          <section id="render_data" class="renderCourses">
-          </section>
-    </section>
-    <br><br><br>
-    <br><br><br>
-    <br><br><br>
-    <br><br><br>
-    <!--<script src="{{url_for('static', filename='../static/app.js')}}" type="module"></script> -->
-    <script src="{{url_for('static', filename='../static/app.js')}}" type="module"></script>
     <script type="text/javascript">
       render_data.innerHTML = ``;
       const user_id = "{{ user_id }}";
@@ -102,7 +63,7 @@
               buttonText = 'Purchase';
             }
             render_data.innerHTML += 
-                `<div class="cardBorder item" id="sendInformation">
+                `<div class="cardBorder item">
                     <div>
                       <img src="{{ url_for('static', filename='img/prof1.jpg') }}">
                     </div>
@@ -113,7 +74,7 @@
                     </div>
                     <div class="purchaseButton">
                       <a href="${user_url}">
-                        <button type="submit">
+                        <button tyle="submit" id="sendInformation">
                             ${buttonText}
                         </button>
                       </a>
@@ -123,7 +84,14 @@
 
       }
     }
-    /**/
+    sendInformation.addEventListener('submit', function(e){
+        e.preventDefault();
+        const purchasingValue = purchasing.value;
+
+        localStorage.setItem('purchasing-value',purchasingValue);
+
+        window.location.href= "../checkout.html";
+      })
 
 
       /*function renderContent(renderData){
@@ -156,5 +124,3 @@
       // console.log('renderData');
       fetchAndRenderData();
   </script>
-</body>
-</html>

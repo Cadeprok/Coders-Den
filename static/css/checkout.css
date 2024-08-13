@@ -1,0 +1,49 @@
+.checkOutContainer{
+    margin: auto;
+    top: 25%;
+    left: 25%;
+    width: 40%;
+    position: static;
+    
+    outline: 8px ridge rgba(85, 233, 85, 0.6);
+    border-radius: 2rem;
+
+}
+.center{
+    display: contents;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+.margin{
+    margin: 20px;
+}
+.item{
+    padding-top: 10px;
+    text-align:center;
+}
+.center-screen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+@media screen and (max-width: 568px) {
+    .checkOutContainer {
+        width: 60%;
+    }
+
+}
+@media screen and (max-width: 568px) {
+    .checkOutContainer {
+        width: 80%;
+    }
+}
+@media screen and (max-width: 300px) {
+    .checkOutContainer {
+        width: 100%;
+    }
+}
