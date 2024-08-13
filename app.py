@@ -53,7 +53,7 @@ class Courses(db.Model):
 
 with app.app_context():
     db.create_all()
-    print('DB Created')
+    
 
 
 
@@ -134,13 +134,22 @@ def logout():
 def register():
     form = RegisterForm()
 
-    if form.validate_on_submit():
-        hashed_password = bcrypt.generate_password_hash(form.password.data)
-        new_user = User(username=form.username.data, password=hashed_password)
-        db.session.add(new_user)
-        db.session.commit()
-        return redirect(url_for('login'))
+    try:
+        if(form.validate_on_submit()):
+            if(User.query.filter_by(username = RegisterForm.username.data)):
+                print("error")
+            else:
+                hashed_password = bcrypt.generate_password_hash(form.password.data)
+                new_user = User(username=form.username.data, password=hashed_password)
+                db.session.add(new_user)
+                db.session.commit()
+                return redirect(url_for('login'))
+    except:
+        # NOTE
+        # use flash instead
 
+        print("an error has occured")
+    
     return render_template('register.html', form=form)
 
 def checkDate(value):

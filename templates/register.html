@@ -1,19 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='register.css') }}">
-</head>
-<body>
+{% extends 'navbar.html' %}
+{% block content %}
     <section>
         <form method="POST" action="">
-            {{ form.hidden_tag() }}
-            {{ form.username }}
-            {{ form.password }}
-            {{ form.submit }}
+            <div class="loginContainer">
+                <div class="center">
+                    <h1 class="loginHeader">
+                        Please <br>
+                        Register
+                    </h1>
+                    {{ form.hidden_tag() }}
+                    <br>
+                    <div class="formVar">
+                        {{ form.username(class="inputStyle") }}
+                    </div>
+                    
+                    <br>
+                    <div class="formVar">
+                        {{ form.password(class="inputStyle")}}
+                    </div>
+                    <div class="formVar formVarButton">
+                        {{ form.submit(class="btn btn-outline-success ml-1 mt-5 inputStyle") }}
+                    </div>
+                    <br>
+                    <br>
+                </div>
+            </div>
         </form>
     </section>
-</body>
-</html>
+{%endblock%}

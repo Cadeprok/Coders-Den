@@ -62,7 +62,65 @@
 .formVar{
     padding-top: 7px;
 }
+.formVarButton{
+    padding-top: 0px;  
+}
+.registerLoginRedirectButton{
+    color: black;
+    text-decoration: none;
+}
 .loginHeader{
     padding-top: 5px;
     color: rgba(18, 85, 18, 0.6);
+}
+.nav-item-container{
+    display:inline-block;
+}
+
+@media screen and (max-width: 1000px) {
+    .loginContainer{
+        left: 33%;
+        top: 33%;
+        width:33%;
+    }
+}
+@media screen and (max-width: 992px) {
+    .nav-item-container{
+        flex-direction: row;
+        display:inline-block;
+    }
+    .navbar-nav{
+        display: flex;
+        flex-direction: row;
+    }
+    .nav-item{
+        margin-left: 10px;
+    }
+}
+@media screen and (max-width: 610px) {
+    .loginContainer {
+        left: 25%;
+        top: 25%;
+        width: 50%;
+    }
+}
+@media screen and (max-width: 469px) {
+    .nav-item{
+        margin-left: 7px;
+        font-size: 12px;
+    }
+    .loginHeader{
+        font-size: 20px;
+    }
+}
+@media screen and (max-width: 405px) {
+    .nav-item{
+        margin-left: 5px;
+        font-size: 10px;
+    }
+    .loginContainer {
+        left: 10%;
+        top: 30%;
+        width: 80%;
+    }
 }
