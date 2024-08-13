@@ -118,11 +118,16 @@ def home():
 def login():
     form = loginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first() # Checking to see if user is in database
-        if user:
-            if bcrypt.check_password_hash(user.password, form.password.data): # Comparing user password and form password
-                login_user(user)
-                return redirect(url_for('userdash'))
+        try:
+            user = User.query.filter_by(username=form.username.data).first() # Checking to see if user is in database
+            if user:
+                if bcrypt.check_password_hash(user.password, form.password.data): # Comparing user password and form password
+                    login_user(user)
+                    return redirect(url_for('userdash'))
+                else:
+                    flash("Please Enter Valid Credentials", 'error')
+        except:
+            flash("An error occurreed, try again later", 'error')
     return render_template('login.html', form=form)   
 
 @app.route('/logout', methods=['GET', 'POST'])
@@ -147,7 +152,7 @@ def register():
     except:
         # NOTE
         # use flash instead
-
+        flash("Username Already In Use", 'error')
         print("an error has occured")
     
     return render_template('register.html', form=form)

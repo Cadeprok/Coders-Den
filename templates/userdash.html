@@ -12,7 +12,7 @@
     <section id="navbar">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand coding-den" href="#">Coding Den</a>
-            <div class="navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-collapse nav-item-container" id="navbarNavAltMarkup">
               <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a>
               </div>
@@ -22,11 +22,15 @@
 
 
 
-    <section class="else container">
+    <section class="container">
     <!-- Load cards for Courses -->
           <section id="render_data" class="renderCourses">
           </section>
     </section>
+    <br><br><br>
+    <br><br><br>
+    <br><br><br>
+    <br><br><br>
     <!--<script src="{{url_for('static', filename='../static/app.js')}}" type="module"></script> -->
     <script type="text/javascript">
       render_data.innerHTML = ``;

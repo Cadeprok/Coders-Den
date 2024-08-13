@@ -11,6 +11,12 @@
                         </h1>
                         {{ form.hidden_tag() }}
                         <br>
+                        
+                            {% for message in get_flashed_messages() %}
+                                <div class="flask_error_class">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
                         <div class="formVar">
                             {{ form.username(class="inputStyle") }}
                         </div>
