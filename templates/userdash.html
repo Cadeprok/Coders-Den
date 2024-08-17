@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="../static/style.css"> -->
     <link rel="stylesheet" href="../static/css/dash.css">
+    <script type="text/javascript" src="../static/variableStorage.js" defer></script>
 
     <title>Document</title>
 </head>
@@ -112,7 +113,7 @@
                       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias esse culpa rerum, voluptate nisi ea dignissimos consequuntur ipsam ratione iusto nobis voluptatum maxime. Repudiandae, illum voluptate? Dolores, culpa accusantium asperiores ex, sint quia, nam ad animi accusamus ipsa molestiae quidem!</p>
                     </div>
                     <div class="purchaseButton">
-                      <a href="${user_url}">
+                      <a href="${user_url}" onclick="storeVariable(${purchasing})">
                         <button type="submit">
                             ${buttonText}
                         </button>
@@ -154,6 +155,10 @@
       //console.log('fetchData');
       // let renderData = fetchData();
       // console.log('renderData');
+      function storeVariable(value) {
+    // Store the variable in local storage
+        localStorage.setItem('purchasing', value);
+      }
       fetchAndRenderData();
   </script>
 </body>
