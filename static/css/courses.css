@@ -1,0 +1,41 @@
+.padding-container{
+    padding: 0 120px;
+}
+
+h1{
+    font-size: 32px;
+    text-align: center;
+}
+.code-background{
+    background-color: black;
+    color: white;
+    padding: 15px;
+}
+.list-container{
+    font-size: 20px;
+}
+p{
+    font-size: 20px;   
+}
+@media screen and (max-width: 992px) {
+    .navbar {
+        position: relative;
+        display: block;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        padding: .5rem 1rem;
+    }
+    .navbar-nav{
+        display: -webkit-inline-box;
+    }
+    .navbar-nav .nav-link {
+        padding-left: 10px;
+    }
+    .nav-item-container{
+        display:contents;
+    }
+}

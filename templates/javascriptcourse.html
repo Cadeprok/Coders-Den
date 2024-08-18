@@ -4,17 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/courses.css">
 </head>
-<body>
-    <div>
-        <h1>
-            What is Javascript?
-        </h1>
-        <p>
+<body class="padding">
 
-        </p>
-    </div>
-    <section>
+    <section id="navbar" class="sticky navbar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand coding-den" href="#">Coding Den</a>
+            <div class="navbar-collapse nav-item-container" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a>
+              </div>
+              <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="{{url_for('userdash')}}">Dashboard<span class="sr-only">(current)</span></a>
+              </div>
+            </div>
+          </nav>
+    </section>
+
+<section class="padding-container">
+    <section class="container-md">
+        <div>
+            <h1>
+                What is Javascript?
+            </h1>
+            <p>
+
+            </p>
+        </div>
+    </section>
+    <section class="container-md">
         <div>
             <h1>
                 Module 1: Printing in JavaScript
@@ -46,7 +66,7 @@
         </div>
     </section>
 
-    <section>
+    <section class="container-md">
         <h1>
             Module 2: Different Data Types
         </h1>
@@ -103,7 +123,7 @@
         </div>
     </section>
     <br><br><br>
-    <section>
+    <section class="container-md">
         <h1>
             Module 3: Conditionals
         </h1>
@@ -193,7 +213,7 @@
         </div>
     </section>
     <br><br><br>
-    <section>
+    <section class="container-md">
         <h1>
             Module 4: Loops
         </h1>
@@ -247,18 +267,24 @@
                 The for loop and while loop will output numbers from 1 to 5. The do-while loop will do the same but guarantees at least one iteration.
             </p>
         </div>
-        <br><br><br>
-        <div>
-            <h1>
-                Summary of Key Points
-            </h1>
-            <ul>
-                <li>Printing: Output text to the console or web page using console.log(), alert(), and document.write().</li>
-                <li>Data Types: Use primitive types (e.g., number, string) and reference types (e.g., object, array).</li>
-                <li>Conditionals: Implement decision-making with if, else if, else, and switch statements.</li>
-                <li>Loops: Repeat code execution using for, while, and do-while loops.</li>
-            </ul>
-        </div>
     </section>
+        <br><br><br>
+        <section class="container-md">
+            <div>
+                <h1>
+                    Summary of Key Points
+                </h1>
+                <ul>
+                    <li>Printing: Output text to the console or web page using console.log(), alert(), and document.write().</li>
+                    <li>Data Types: Use primitive types (e.g., number, string) and reference types (e.g., object, array).</li>
+                    <li>Conditionals: Implement decision-making with if, else if, else, and switch statements.</li>
+                    <li>Loops: Repeat code execution using for, while, and do-while loops.</li>
+                </ul>
+            </div>
+        </section>
+</section>
+    <br><br><br>
+    <br><br><br>
+    <br><br><br>
 </body>
 </html>

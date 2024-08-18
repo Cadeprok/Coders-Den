@@ -11,7 +11,7 @@
     <title>Document</title>
 </head>
 <body class="body">
-    <section id="navbar" class="sticky">
+    <section id="navbar" class="sticky navbar">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand coding-den" href="#">Coding Den</a>
             <div class="navbar-collapse nav-item-container" id="navbarNavAltMarkup">
@@ -63,8 +63,11 @@
         else if(key === 'ownsJavascript'){
           return 'javascriptcourse';
         }
-        else{
+        else if(key === "ownsPython"){
           return 'pythoncourse';
+        }
+        else{
+          console.log("error");
         }
       }
 

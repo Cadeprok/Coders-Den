@@ -1,8 +1,7 @@
-.sticky{
+/*.sticky{
     position: fixed;
     top: 0;
-    width: 100%;
-}
+}*/
 
 .container {
     height: 200px;
@@ -58,7 +57,7 @@ p{
 }*/
 @media screen and (max-width: 992px) {
 
-  .nav-item-container{
+  /*.nav-item-container{
       flex-direction: row;
       display:inline-block;
   }
@@ -68,5 +67,25 @@ p{
   }
   .nav-item{
       margin-left: 10px;
+  }*/
+  .navbar {
+    position: relative;
+    display: block;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: .5rem 1rem;
+  }
+  .navbar-nav{
+      display: -webkit-inline-box;
+  }
+  .navbar-nav .nav-link {
+      padding-left: 10px;
+  }
+  .nav-item-container{
+      display:contents;
   }
 }
