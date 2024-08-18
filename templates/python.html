@@ -6,6 +6,199 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <section>
+        <h1>
+            What is Python?
+        </h1>
+        <p>
+
+        </p>
+    </section>
+
+    <section>
+        <h1>Printing</h1>
+        <div>
+            <ul>
+                Basic Printing
+                <li>The print() function is used to display information to the console. You can print strings, numbers, and other data types.</li>
+                Printing Multiple Items
+                <li>You can print several items separated by commas. The print() function will insert spaces between them.                </li>
+                Formatting Strings
+                <li>You can format strings to include variables and other data. This is useful for creating user-friendly output.                </li>
+            </ul>
+        </div>
+        <div>
+            <p>Basic Print Statement</p>
+            <p class="code-background">
+                # Print a simple string
+                print("Hello, World!")  # Output: Hello, World!
+
+            </p>
+        </div>
+        <div>
+            <p>Printing Multiple Items:</p>
+            <p class="code-background">
+                # Print multiple items with a space between them
+                print("Hello,", "World!")  # Output: Hello, World!                
+            </p>
+        </div>
+        <div>
+            <p>String Formatting:</p>
+            <p class="code-background">
+                name = "Alice"
+                age = 30
+                
+                # Using f-strings for formatting
+                print(f"Name: {name}, Age: {age}")  # Output: Name: Alice, Age: 30
+                
+                # Using .format() method for formatting
+                print("Name: {}, Age: {}".format(name, age))  # Output: Name: Alice, Age: 30                
+            </p>
+            <br><br>
+        </div>
+    </section>
+
+    <section>
+        <h1>
+            Data Types  
+        </h1>
+        <div>
+            <ul>
+                <li>Integers (int): Whole numbers, e.g., 1, 100, -7.</li>
+                <li>Floats (float): Numbers with decimal points, e.g., 3.14, -0.001.</li>
+                <li>String (str): Text data enclosed in quotes, e.g., "hello", 'world'.</li>
+                <li>Boolean (bool): Represents True or False.</li>
+                <li>Lists (list):Ordered, mutable collections of items. Items can be of different types, e.g., [1, "hello", 3.14].</li>
+            </ul>
+        </div>
+        <br>
+        <div class="code-background">
+            # Integer
+            num1 = 10
+            print(type(num1))  # Output: <class int>
+            
+            # Float
+            num2 = 3.14
+            print(type(num2))  # Output: <class float>            
+        </div>
+        <br>
+        <div class="code-background">
+            text = "Python is fun!"
+            print(text)  # Output: Python is fun!
+            print(type(text))  # Output: <class str>            
+        </div>
+        <br>
+        <div class="code-background">
+            is_python_fun = True
+            print(is_python_fun)  # Output: True
+            print(type(is_python_fun))  # Output: <class bool>            
+        </div>
+        <br>
+        <div class="code-background">
+            fruits = ["apple", "banana", "cherry"]
+            print(fruits)  # Output: ['apple', 'banana', 'cherry']
+            print(type(fruits))  # Output: <class list>            
+        </div>
+    </section>
+    <br><br>
+    <section>
+        <h1>
+            Conditionals
+        </h1>
+        <p>
+            if Statements: Check if a condition is true and execute code based on that.
+            elif (Else If) Statements: Check additional conditions if the initial if condition is false.
+            else Statement: Execute code when all preceding conditions are false
+        </p>
+        <div>
+            <p>Comparison Operators:</p>
+            <ul>
+                <li> (==): (equal to) </li>
+                <li>(!=): (not equal to)</li>
+                <li>(>): (greater than)</li>
+                <li>(&lt;): (less than)</li>
+                <li>(>=): (greater than or equal to)</li>
+                <li>(&lt;=): (less than or equal to)</li>
+            </ul>
+        </div>
+        <div>
+            <p>
+                Basic Conditionals:
+            </p>
+            <p class="code-background">
+                age = 18
+
+                if age &lt; 18:
+                    print("You are a minor.")
+                elif age == 18:
+                    print("You are an adult now!")
+                else:
+                    print("You are an adult.")
+            </p>
+            <br>
+            <p>
+                Comparison Operators:
+            </p>
+            <p class="code-background">
+                num1 = 10
+                num2 = 20
+                
+                print(num1 == num2)  # Output: False
+                print(num1 &lt; num2)   # Output: True
+                print(num1 != num2)  # Output: True                
+            </p>
+        </div>
+    </section>
+    <br><br>
+    <section>
+       <h1>Loops</h1>
+       <div>
+            <ul>
+                <li>for Loops: Iterate over a sequence (e.g., list, string) and execute code for each item.</li>
+                <li>while Loops: Repeat code as long as a condition remains true.</li>
+                <li>range() Function: Generates a sequence of numbers, often used in for loops.</li>
+                <li>break Statement: Exit the loop prematurely.</li>
+                <li>continue Statement: Skip the current iteration and continue with the next one.</li>
+            </ul>
+       </div>
+       <div>
+            <p>For Loop:</p>
+            <p class="code-background">
+                # Iterating over a range
+                for i in range(5):
+                    print(i)  # Output: 0 1 2 3 4                 
+            </p>
+            <br>
+            <p>While Loop:</p>
+            <p class="code-background">
+                count = 0
+                while count &lt; 5:
+                    print(count)  # Output: 0 1 2 3 4
+                    count += 1                    
+            </p>
+            <br>
+            <p>Break and Continue:</p>
+            <p class="code-background">
+                for i in range(10):
+                if i == 5:
+                    break  # Exit loop when i equals 5
+                if i % 2 == 0:
+                    continue  # Skip even numbers
+                print(i)  # Output: 1 3            
+            </p>
+       </div> 
+    </section>
+    <br><br>
+    <section>
+        <h1>Summary</h1>
+        <div>
+            <ul>
+                <li>Print data and format output.</li>
+                <li>Work with various data types and understand their uses.</li>
+                <li>Implement conditional statements to make decisions.</li>
+                <li>Use loops to repeat tasks efficiently.</li>
+            </ul>
+        </div>
+    </section>
 </body>
 </html>
