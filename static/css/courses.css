@@ -39,3 +39,28 @@ p{
         display:contents;
     }
 }
+@media screen and (max-width: 719px) {
+    .code-background{
+        font-size: 16px;
+    }
+    .padding-container{
+        padding: 0 80px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+
+    .padding-container{
+        padding: 0 60px;
+    }
+
+}
+
+@media screen and (max-width: 540px) {
+    .padding-container{
+        padding: 0 30px;
+    }
+    .code-background{
+        font-size: 12px;
+    }
+}

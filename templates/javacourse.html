@@ -23,23 +23,27 @@
           </nav>
     </section>
 
-<section class="padding-container">
+<section class="padding-container container-md">
     <section class="container-md">
         <h1>
             What is Java?
         </h1>
+        <br>
         <p>
-
+            Java is a versatile, high-level programming language designed to be platform-independent, meaning you can write code once and run it anywhere. Developed by Sun Microsystems and now maintained by Oracle, Java is widely used for building a variety of applications, from web and mobile apps to large-scale enterprise systems. Its object-oriented structure, robust security features, and extensive libraries make it a popular choice for developers around the world. Java’s "write once, run anywhere" philosophy is powered by the Java Virtual Machine (JVM), which allows Java applications to run on any device or operating system that has a JVM installed.
         </p>
+        <br>
     </section>
 
     <section  class="container-md" id="print">
         <h1>
             Module 1: Printing in Java
         </h1>
+        <br>
         <p>
             Concept: Printing in Java refers to the process of sending output to the console. This is essential for displaying information, debugging, and providing feedback to users.
         </p>
+        <br>
         <div>
             <ul>
                 <li>System.out.print(): Prints text to the console without adding a newline at the end. This means subsequent prints will continue on the same line.                </li>
@@ -47,24 +51,27 @@
                 <li>System.out.printf(): Prints formatted text. You can include placeholders in the string that are replaced with variable values. This method allows for precise control over the formatting of the output.                </li>
             </ul>
         </div>
+        <br>
         <div>
             <h1> Example </h1>
+            <br>
             <p class="code-background">
-                System.out.print("Hello, ");
+                System.out.print("Hello, "); <br>
                 System.out.println("World!"); 
             </p>
             <br>
             <p>This will output Hello, World! on the same line because System.out.print does not append a newline, while System.out.println does.            </p>
         </div>
-    </section>
-
+    </section> 
+    <br>
     <section class="container-md">
         <h1>
             Module 2: Different Data Types 
         </h1>
-
+        <br>
         <div>
             <h1>Primitive Data Types</h1>
+            <br>
             <p>Concept: Primitive data types are the most basic data types available in Java. They represent simple values and are not objects.</p>
             <div>
                 <ul>
@@ -78,6 +85,7 @@
         </div>
         <div>
             <h1> Reference Data Types </h1>
+            <br>
             <p>Concept: Reference data types refer to objects and arrays. They hold references to data rather than the data itself.            </p>
             <div>
                 <ul>
@@ -85,97 +93,110 @@
                     <li>Arrays: Used to store multiple values of the same type in a single variable. Arrays have a fixed size once created. (Example: int[] numbers = {1, 2, 3, 4, 5};)                    </li>
                 </ul>
             </div>
-            <div class="code-background">
-                String message = "Hello, Java!";
-                int[] numbers = {1, 2, 3, 4, 5};
+            <br>
+            <div>
+                <p class="code-background">
+                    String message = "Hello, Java!";<br>
+                    int[] numbers = {1, 2, 3, 4, 5};<br>
+                </p>
             </div>
             <br>
             <p>message holds a reference to a String object, while numbers holds a reference to an array of integers.</p>
         </div>
     </section>
-    
+    <br>
     <section class="container-md">
         <h1>
             Module 3: Conditionals
         </h1>
-        <div>Introduction to Conditionals</div>
+        <br>
         <p>
             Concept: Conditionals allow your program to make decisions based on certain conditions. They execute different code blocks depending on whether a condition is true or false.
         </p>
+        <br>
         <div>
             <p>
                 if Statement: Evaluates a condition and executes a block of code if the condition is true
             </p>
+            <br>
             <p class="code-background">
-                if (condition) {
-                    // Code to execute if condition is true
+                if (condition) {<br>
+                    // Code to execute if condition is true<br>
                 }
             </p>
+            <br>
             <p>
                 else if Statement: Used to test multiple conditions. Follows an if statement and provides an alternative condition to test.
             </p>
+            <br>
             <p class="code-background">
-                if (condition1) {
-                    // Code if condition1 is true
-                } else if (condition2) {
-                    // Code if condition2 is true
+                if (condition1) {<br>
+                    // Code if condition1 is true<br>
+                } else if (condition2) {<br>
+                    // Code if condition2 is true<br>
                 }
             </p>
+            <br>
             <p>
                 else Statement: Executes a block of code if all preceding if and else if conditions are false.
             </p>
+            <br>
             <p class="code-background">
-                if (condition) {
-                    // Code if condition is true
-                } else {
-                    // Code if condition is false
+                if (condition) {<br>
+                    // Code if condition is true<br>
+                } else {<br>
+                    // Code if condition is false<br>
                 }
             </p>
+            <br>
             <p class="code-background">
-                int x = 3;
-                if(x == 3){
-                    System.out.println("True");
-                }
-                else if(x == 2){
-                    // Nothing occurs
-                }
-                else{
-                    // If no other conditionals are met:
-                    System.out.println("All failed");
-                }
+                int x = 3;<br>
+                if(x == 3){<br>
+                    System.out.println("True");<br>
+                }<br>
+                else if(x == 2){<br>
+                    // Nothing occurs<br>
+                }<br>
+                else{<br>
+                    // If no other conditionals are met:<br>
+                    System.out.println("All failed");<br>
+                }<br>
             </p>
+            <br>
             <p>
                 switch Statement: Allows for the selection of one of many code blocks to execute. Useful when multiple conditions are based on the same variable.
             </p>
+            <br>
             <p class="code-background">
-                switch (variable) {
-                    case value1:
-                        // Code if variable equals value1
-                        break;
-                    case value2:
-                        // Code if variable equals value2
-                        break;
-                    default:
-                        // Code if variable does not match any case
+                switch (variable) {<br>
+                    case value1:<br>
+                        // Code if variable equals value1<br>
+                        break;<br>
+                    case value2:<br>
+                        // Code if variable equals value2<br>
+                        break;<br>
+                    default:<br>
+                        // Code if variable does not match any case<br>
                 }
             </p>
+            <br>
             <p class="code-background">
-                int day = 3;
+                int day = 3;<br>
 
-                switch (day) {
-                    case 1:
-                        System.out.println("Monday");
-                        break;
-                    case 2:
-                        System.out.println("Tuesday");
-                        break;
-                    case 3:
-                        System.out.println("Wednesday");
-                        break;
-                    default:
-                        System.out.println("Invalid day");
-                        break;
-                }
+                switch (day) {<br>
+                    case 1:<br>
+                        System.out.println("Monday");<br>
+                        break;<br>
+                    case 2:<br>
+                        System.out.println("Tuesday");<br>
+                        break;<br>
+                    case 3:<br>
+                        System.out.println("Wednesday");<br>
+                        break;<br>
+                    default:<br>
+                        System.out.println("Invalid day");<br>
+                        break;<br>
+                }<br>
             </p>
             <br>
             <p>
@@ -183,50 +204,52 @@
             </p>
         </div>
     </section>
-    
+    <br>
     <section class="container-md">
         <h1>Module 4: Loops</h1>
         <div>
-            <h1>
-                Introduction to Loops
-            </h1>
+            <br>
             <p>Concept: Loops allow you to repeatedly execute a block of code as long as a specified condition is true. They are used for tasks that require repetition.            </p>
+            <br>
             <div>
                 <p>for Loop: Ideal when the number of iterations is known beforehand. Includes initialization, condition, and iteration expression.                </p>
+                <br>
                 <p class="code-background">
-                    for (initialization; condition; iteration) {
-                        // Code to execute on each iteration
-                    }
+                    for (initialization; condition; iteration) {<br>
+                        // Code to execute on each iteration<br>
+                    }<br>
                 </p>
+                <br>
                 <p>while Loop: Executes a block of code as long as the specified condition is true. Suitable when the number of iterations is not known in advance.                </p>
                 <p class="code-background">
-                    while (condition) {
-                        // Code to execute while condition is true
-                    }
+                    while (condition) {<br>
+                        // Code to execute while condition is true<br>
+                    }<br>
                 </p>
                 <p>do-while Loop: Similar to while loop, but guarantees that the code block is executed at least once before checking the condition.                </p>
+                <br>
                 <p class="code-background">
-                    do {
-                        // Code to execute
-                    } while (condition);
+                    do {<br>
+                        // Code to execute<br>
+                    } while (condition);<br>
                 </p>
-                <br><br>
+                <br>
                 <p class="code-background">
-                    for (int i = 1; i  &lt;= 5; i++) {
-                        System.out.println("Iteration: " + i);
-                    }
+                    for (int i = 1; i  &lt;= 5; i++) {<br>
+                        System.out.println("Iteration: " + i);<br>
+                    }<br>
                     
-                    int i = 1;
-                    while (i  &lt;= 5) {
-                        System.out.println("Iteration: " + i);
-                        i++;
-                    }
+                    int i = 1;<br>
+                    while (i  &lt;= 5) {<br>
+                        System.out.println("Iteration: " + i);<br>
+                        i++;<br>
+                    }<br>
                     
-                    int j = 1;
-                    do {
-                        System.out.println("Iteration: " + j);
-                        j++;
-                    } while (j  &lt;= 5);
+                    int j = 1;<br>
+                    do {<br>
+                        System.out.println("Iteration: " + j);<br>
+                        j++;<br>
+                    } while (j  &lt;= 5);<br>
                 </p>
                 <br>
                 <p>
@@ -235,9 +258,10 @@
             </div>
         </div>
     </section>
-
+    <br>
     <section class="container-md">
         <h1> Key Points Summary </h1>
+        <br>
         <ul>
             <li>
                 Printing: Output text to the console using print(), println(), and printf().
