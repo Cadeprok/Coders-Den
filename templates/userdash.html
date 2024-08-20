@@ -25,19 +25,102 @@
           </nav>
     </section>
 
+    <section>
+      <div class="cardBorder item" id="sendInformation">
+        <div  class="course-img">
+          <img height="200px"  src="{{ url_for('static', filename='img/pythonImage.jpg') }}">
+        </div>
+        <div>
+          <h1>Python Course</h1>
+          <h2>Taught By Mia Collins</h2>
+          <p>Unlock the power of Python with our comprehensive Python programming course. Designed for both beginners and those with some programming experience, this course will guide you through the essentials of Python, one of the most popular and versatile programming languages in the world.</p>
+        </div>
+        
+          {% if ownsPython %}
+          <div class="purchaseButton">
+            <a href="{{ url_for('pythoncourse') }}">
+              <button type="submit">
+                  Learn
+              </button>
+            </a>
+          </div>
+          {% else %}
+          <div class="purchaseButton">
+            <a href="{{ url_for('checkout', purchasing='python') }}">
+              <button type="submit">
+                  Purchase
+              </button>
+            </a>
+          </div> 
+          {% endif %}
 
+    </div>
+    <br><br><br>
+    <div class="cardBorder item" id="sendInformation">
+      <div class="course-img">
+        <img height="200px" class="course-img" src="{{ url_for('static', filename='img/javaImage.png') }}">
+      </div>
+      <div>
+        <h1>Java Course</h1>
+        <h2>Taugh By Liam Thompson</h2>
+        <p>Dive into the world of Java with this comprehensive course designed for beginners and those looking to solidify their programming foundation. Java is a versatile and powerful language used in everything from mobile apps to enterprise-level solutions, and this course will equip you with the skills to start your journey in software development.        </p>
+      </div>
+      
+        {% if ownsJava %}
+        <div class="purchaseButton">
+          <a href="{{ url_for('javacourse') }}">
+            <button type="submit">
+                Learn
+            </button>
+          </a>
+        </div>
+        {% else %}
+        <div class="purchaseButton">
+          <a href="{{ url_for('checkout', purchasing='java') }}">
+            <button type="submit">
+                Purchase
+            </button>
+          </a>
+        </div> 
+        {% endif %}
+    </div>
+    <br>
+    <div class="cardBorder item" id="sendInformation">
+      <div class="course-img">
+        <img height="200px" width="200px" class="course-img" src="{{ url_for('static', filename='img/javascriptImage.png') }}">
+      </div>
+      <div>
+        <h1>Javascript Course</h1>
+        <h2>Taught By Noah Bennett</h2>
+        <p>    Unlock the full potential of web development with our comprehensive JavaScript course. Whether you’re just starting out or looking to refine your skills, this course is designed to guide you through the fundamentals to advanced concepts of JavaScript, the language that powers dynamic and interactive websites.        </p>
+      </div>
+      
+        {% if ownsJavascript %}
+        <div class="purchaseButton">
+          <a href="{{ url_for('javascriptcourse') }}">
+            <button type="submit">
+                Learn
+            </button>
+          </a>
+        </div>
+        {% else %}
+        <div class="purchaseButton">
+          <a href="{{ url_for('checkout', purchasing='javascript') }}">
+            <button type="submit">
+                Purchase
+            </button>
+          </a>
+        </div> 
+        {% endif %}
 
-    <section class="container">
-    <!-- Load cards for Courses -->
-          <section id="render_data" class="renderCourses">
-          </section>
-    </section>
+  </div>
+</section>
     <br><br><br>
     <br><br><br>
     <br><br><br>
     <br><br><br>
     <!--<script src="{{url_for('static', filename='../static/app.js')}}" type="module"></script> -->
-    <script src="{{url_for('static', filename='../static/app.js')}}" type="module"></script>
+    <!--<script src="{{url_for('static', filename='../static/app.js')}}" type="module"></script>
     <script type="text/javascript">
       render_data.innerHTML = ``;
       const user_id = "{{ user_id }}";
@@ -163,6 +246,6 @@
         localStorage.setItem('purchasing', value);
       }
       fetchAndRenderData();
-  </script>
+  </script>-->
 </body>
 </html>

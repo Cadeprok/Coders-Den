@@ -55,6 +55,17 @@ p{
 .navbar{
   display: -webkit-inline-box;
 }*/
+.navbar{
+  width: 100%;
+}
+.course-img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 200px;
+  width: 200px;
+}
 @media screen and (max-width: 992px) {
 
   /*.nav-item-container{

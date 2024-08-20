@@ -167,6 +167,7 @@ def checkDate(value):
 @app.route('/checkout', methods=['GET', 'POST'])
 @login_required
 def checkout():
+    purchasing = request.args.get('purchasing')
     form = checkoutForm()
     user = User.query.filter_by(id = str(current_user.id)).first()
     passes = True
@@ -197,7 +198,7 @@ def checkout():
                 flash('Error Occured, Please try again')
     # print('hello')
     # time.sleep(10)
-    return render_template('checkout.html', user_id = str(user.id), username = str(user.username), form=form)
+    return render_template('checkout.html', user_id = str(user.id), username = str(user.username), form=form, purchasing = purchasing)
         
     
 '''
@@ -209,22 +210,22 @@ def checkout():
 '''
 
 
-@app.route('/userdash/<user_id>/pythoncourse', methods=['GET', 'POST'])
+@app.route('/userdash/pythoncourse', methods=['GET', 'POST'])
 @login_required
-def pythoncourse(user_id):
+def pythoncourse():
     user = User.query.filter_by(id = str(current_user.id)).first()
     return render_template('pythoncourse.html', user_id = str(user.id), username = str(user.username), price=50)
 
 
-@app.route('/userdash/<user_id>/javascriptcourse', methods=['GET'])
+@app.route('/userdash/javascriptcourse', methods=['GET'])
 @login_required
-def javascriptcourse(user_id):
+def javascriptcourse():
     user = User.query.filter_by(id = str(current_user.id)).first()
     return render_template('javascriptcourse.html', user_id = str(user.id), username = str(user.username), price=40)
 
-@app.route('/userdash/<user_id>/javacourse', methods=['GET'])
+@app.route('/userdash/javacourse', methods=['GET', 'POST'])
 @login_required
-def javacourse(user_id):
+def javacourse():
     user = User.query.filter_by(id = str(current_user.id)).first()
     return render_template('javacourse.html', user_id = str(user.id), username = str(user.username), price=30)
 
@@ -233,7 +234,7 @@ def javacourse(user_id):
 def userdash():
     
     user = User.query.filter_by(id = str(current_user.id)).first()
-    return render_template('userdash.html', user_id = str(user.id))
+    return render_template('userdash.html', user_id = str(user.id), ownsPython = user.pythonOwner, ownsJava = user.javaOwner, ownsJavascript = user.javascriptOwner)
 
 
 
