@@ -214,20 +214,29 @@ def checkout():
 @login_required
 def pythoncourse():
     user = User.query.filter_by(id = str(current_user.id)).first()
-    return render_template('pythoncourse.html', user_id = str(user.id), username = str(user.username), price=50)
+    if (user.pythonOwner):
+        return render_template('pythoncourse.html', user_id = str(user.id), username = str(user.username), price=50)
+    else:
+        flash('Error Occured', 'error')
 
 
 @app.route('/userdash/javascriptcourse', methods=['GET'])
 @login_required
 def javascriptcourse():
     user = User.query.filter_by(id = str(current_user.id)).first()
-    return render_template('javascriptcourse.html', user_id = str(user.id), username = str(user.username), price=40)
+    if(user.javascriptOwner):
+        return render_template('javascriptcourse.html', user_id = str(user.id), username = str(user.username), price=40)
+    else:
+        flash('Error Occured', 'error')
 
 @app.route('/userdash/javacourse', methods=['GET', 'POST'])
 @login_required
 def javacourse():
     user = User.query.filter_by(id = str(current_user.id)).first()
-    return render_template('javacourse.html', user_id = str(user.id), username = str(user.username), price=30)
+    if(user.javaOwner):
+        return render_template('javacourse.html', user_id = str(user.id), username = str(user.username), price=30)
+    else:
+        flash('Error Occured', 'error')
 
 @app.route('/userdash', methods=['GET', 'POST'])
 @login_required

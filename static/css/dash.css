@@ -66,6 +66,16 @@ p{
   height: 200px;
   width: 200px;
 }
+
+.flask_error_class{
+  background-color: rgb(240, 240, 133);
+  width: 60%;
+  left: 20%;
+  position: relative;
+  padding: 2px;
+
+}
+
 @media screen and (max-width: 992px) {
 
   /*.nav-item-container{

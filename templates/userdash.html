@@ -35,7 +35,11 @@
           <h2>Taught By Mia Collins</h2>
           <p>Unlock the power of Python with our comprehensive Python programming course. Designed for both beginners and those with some programming experience, this course will guide you through the essentials of Python, one of the most popular and versatile programming languages in the world.</p>
         </div>
-        
+        {% for message in get_flashed_messages() %}
+          <div class="flask_error_class">
+              {{ message }}
+          </div>
+        {% endfor %}
           {% if ownsPython %}
           <div class="purchaseButton">
             <a href="{{ url_for('pythoncourse') }}">
@@ -65,7 +69,11 @@
         <h2>Taugh By Liam Thompson</h2>
         <p>Dive into the world of Java with this comprehensive course designed for beginners and those looking to solidify their programming foundation. Java is a versatile and powerful language used in everything from mobile apps to enterprise-level solutions, and this course will equip you with the skills to start your journey in software development.        </p>
       </div>
-      
+      {% for message in get_flashed_messages() %}
+        <div class="flask_error_class">
+            {{ message }}
+        </div>
+      {% endfor %}
         {% if ownsJava %}
         <div class="purchaseButton">
           <a href="{{ url_for('javacourse') }}">
@@ -94,7 +102,11 @@
         <h2>Taught By Noah Bennett</h2>
         <p>    Unlock the full potential of web development with our comprehensive JavaScript course. Whether you’re just starting out or looking to refine your skills, this course is designed to guide you through the fundamentals to advanced concepts of JavaScript, the language that powers dynamic and interactive websites.        </p>
       </div>
-      
+      {% for message in get_flashed_messages() %}
+        <div class="flask_error_class">
+            {{ message }}
+        </div>
+      {% endfor %}
         {% if ownsJavascript %}
         <div class="purchaseButton">
           <a href="{{ url_for('javascriptcourse') }}">
