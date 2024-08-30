@@ -23,16 +23,14 @@ const professor_information = [
 ];
 
 
-const area = document.getElementById('.instructors');
+const instructorElement = document.getElementById('instructors');
 
-
-area.innerHTML = ``;
 
 for (let i = 0; i < professor_information.length; i++){
     let professor = professor_information[i];
-    area.innerHTML += `
+    instructorElement.innerHTML += `
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="${professor['image_src']}" alt="Card image cap">
+                    <img class="card-img-top" src="${professor['img_src']}" alt="Card image cap">
                     <div class="card-body">
                     <h5 class="card-title">${professor['name']}</h5>
                     <p class="card-text"> ${professor['description']} </p>
