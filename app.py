@@ -9,7 +9,6 @@ from wtforms.validators import InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 from forms import RegisterForm, loginForm, checkoutForm
-import time
 app = Flask(__name__)
 # Creates database instance
 

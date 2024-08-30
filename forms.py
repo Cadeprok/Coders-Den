@@ -37,7 +37,7 @@ class checkoutForm(FlaskForm):
     last_name = StringField(validators=[InputRequired(), Length(min=1, max=20)], render_kw={"placeholder":"Last Name"})
     expiration_date = StringField(validators=[InputRequired(), Length(min=4, max=5)], render_kw={"placeholder":"Expiration Date"})
     security_code = StringField(validators=[InputRequired(), Length(min=3, max=3)], render_kw={"placeholder":"Security Code"})
-    purchasing = SelectField('Programming Language', choices=[('python', 'Python'), ('java','Java'), ('javascript', 'Javascript')], validators=[InputRequired()])
+    # purchasing = SelectField('Programming Language', choices=[('python', 'Python'), ('java','Java'), ('javascript', 'Javascript')], validators=[InputRequired()])
 
     submit = SubmitField("Purchase")
 

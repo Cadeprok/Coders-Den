@@ -1,11 +1,9 @@
-/*.sticky{
-    position: fixed;
-    top: 0;
-}*/
+html {
+  scroll-behavior: smooth;
+}
 
 .container {
     height: 200px;
-    /*display: flex;*/
     align-items: center;
     justify-content: center;
   }
@@ -49,12 +47,6 @@ p{
 .purchaseButton{
     text-align: center;
 }
-/*.nav-item-container{
-  display:inline-block;
-}
-.navbar{
-  display: -webkit-inline-box;
-}*/
 .navbar{
   width: 100%;
 }
@@ -78,17 +70,6 @@ p{
 
 @media screen and (max-width: 992px) {
 
-  /*.nav-item-container{
-      flex-direction: row;
-      display:inline-block;
-  }
-  .navbar-nav{
-      display: flex;
-      flex-direction: row;
-  }
-  .nav-item{
-      margin-left: 10px;
-  }*/
   .navbar {
     position: relative;
     display: block;

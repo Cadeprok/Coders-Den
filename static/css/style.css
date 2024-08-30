@@ -1,3 +1,8 @@
+html {
+    scroll-behavior: smooth;
+  }
+
+
 .sticky{
     position: fixed;
     top: 0;
@@ -44,9 +49,7 @@ h6{
 /* MEDIA QUIERIES*/
 
 @media screen and (max-width: 992px) {
-    /*.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link{
-        padding-left: 10px;
-    }*/
+
     .navbar-nav{
         display: -webkit-inline-box;
     }

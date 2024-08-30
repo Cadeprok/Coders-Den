@@ -3,55 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="./static/img/html-coding.png">
+    <title>Checkout | {{ course_information[0]['name'] }}</title>
     <link rel="stylesheet" href="../static/css/checkout.css">
 </head>
 <body>
-    <section><!--
-        <form method="POST" action="">
-            <div class="parent">
-                <div class="">
-                    <div class="checkOutContainer child">
-                        <div class="center">
-                                {{ form.hidden_tag() }}
-                            <div class="margin">
-                                <div class="checkoutTop item">
-                                    {{ form.cc_number }}
-                                </div>
-                                <div class="checkoutMiddle item">
-                                    {{ form.first_name }}
-                                    {{ form.last_name }}
-                                    {{ form.expiration_date }}
-                                </div>
-                                <div class="checkoutBottom item">
-                                    {{ form.security_code }}
-                                    {{ form.purchasing }}
-                                    
-                                </div>
-                                <div class="submit item">
-                                    {{ form.submit }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="child">
-                    <p>
-                        content
-                    </p>
-                </div>
-            </div>
-        </form>
-    --></section>
-    {{ course_information }}
-    <section>
-
     <section>
         <div class="center-screen">
             <div class="checkOutContainer">
+                <div>
+                    <p>Purchasing: {{ course_information[0]['name'] }}</p>
+                </div>
                 <div class="center">
                         {{ form.hidden_tag() }}
                     <div class="margin">
@@ -88,53 +50,6 @@
             </div>
         </div>
     </section>
-
-    
-
-   <!-- <div id='' style='text-align: center;'>
-        <div class="center-screen">
-            <div class="checkOutContainer">
-                <div class="center">
-                        {{ form.hidden_tag() }}
-                    <div class="margin">
-                        <div class="checkoutTop item">
-                            {{ form.cc_number }}
-                        </div>
-                        <div class="checkoutMiddle item">
-                            {{ form.first_name }}
-                            {{ form.last_name }}
-                            {{ form.expiration_date }}
-                        </div>
-                        <div class="checkoutBottom item">
-                            {{ form.security_code }}
-                            {{ form.purchasing }}
-                            
-                        </div>
-
-
-
-
-                        <div style='text-align: center; padding-top: 20px;'>
-                            <div style='display: inline-block; vertical-align: top;'>
-                                <img src="{{ url_for('static', filename='../static/img/pythonImage.jpg') }}" style="height:50%; width: 50%;">
-                            </div>
-                            <div>
-                                Price: $50
-                            </div>
-                        </div>
-
-
-
-
-
-                        <div class="submit item">
-                            {{ form.submit }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>-->
 </section>
 </body>
 </html>

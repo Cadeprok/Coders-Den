@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+  }
+
 .sticky{
     position: fixed;
     top: 0;
@@ -55,7 +59,6 @@
     left: 40%;
     width: 20%;
     position: absolute;
-    /*border: 1px solid lightgreen;*/
     outline: 8px ridge rgba(85, 233, 85, 0.6);
     border-radius: 2rem;
 }

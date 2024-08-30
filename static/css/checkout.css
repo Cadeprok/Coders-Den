@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+  }
+
 .checkOutContainer{
     margin: auto;
     top: 25%;
