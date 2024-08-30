@@ -49,6 +49,25 @@ class Courses(db.Model):
     pythonOwner = db.Column(db.Boolean, default=False, nullable=False)
     javaOwner = db.Column(db.Boolean, default=False, nullable= False)
 '''
+course_information = [
+    {
+        'course_id' : 'python',
+        'name' : 'Python Course',
+        'img_source' : './static/img/pythonImage.jpg',
+        'cost' : 30
+    },
+    {
+        'course_id' : 'java',
+        'name' : 'Java Course',
+        'img_source' : './static/img/javaImage.png',
+        'cost' : 40
+    },
+    {
+        'course_id' : 'javascript',
+        'name' : 'Javascript Course',
+        'img_source' : './static/img/javascriptImage.png',
+        'cost' : 50
+    }]
 
 
 with app.app_context():
@@ -198,7 +217,13 @@ def checkout():
                 flash('Error Occured, Please try again')
     # print('hello')
     # time.sleep(10)
-    return render_template('checkout.html', user_id = str(user.id), username = str(user.username), form=form, purchasing = purchasing)
+    content = []
+
+    for i in range(len(course_information)):
+        if course_information[i]['course_id'] == purchasing:
+            content.append(course_information[i])
+
+    return render_template('checkout.html', user_id = str(user.id), username = str(user.username), form=form, purchasing = purchasing, course_information = content)
         
     
 '''

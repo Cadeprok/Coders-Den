@@ -1,4 +1,4 @@
-import {courses} from './static/courses.js';
+import { courses } from './courses.js';
     const render_checkout = document.getElementById("render_cart_data");
     const buyingElement = document.querySelector(".variableStorage");
     console.log(purchasing);

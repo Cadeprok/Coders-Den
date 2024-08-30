@@ -26,4 +26,4 @@ const courses = [
 ]
 
 
-export {courses};
+export { courses };
