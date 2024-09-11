@@ -277,11 +277,3 @@ def userdash():
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8000,debug=True)
-
-
-# 24:40
-# https://www.youtube.com/watch?v=71EU8gnZqZQ&t=909s
-
-
-# https://www.geeksforgeeks.org/login-and-registration-project-using-flask-and-mysql/
-# https://www.youtube.com/watch?v=2mbHyB2VLYY
